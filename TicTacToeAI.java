@@ -15,23 +15,16 @@ public class TicTacToeAI {
 
 		printBoardPositions();	//print board positions
 
-		char first = pickFirstPlayer();
+		char first = whoGoesFirst();
 		// char first = playerO;
 
 		// System.out.println("First Player is:  " + first);
 		if(first == playerX) {
 			System.out.println("X is first");
-			int move = pickFirstMove(playerX);
-			playerXTaken = addPos(move, playerXTaken);
-			printScreen(playerXTaken, playerOTaken);
-			currPlayer = playerO;
+			currPlayer = playerX;
 		} else {
 			System.out.println("O is first");
-			int move = pickFirstMove(playerO);
-			playerOTaken = addPos(move, playerOTaken);
-			printScreen(playerXTaken, playerOTaken);
-			currPlayer = playerX;
-
+			currPlayer = playerO;
 		}
 
 		while (winnerFound == false && draw == false) {
@@ -89,6 +82,7 @@ public class TicTacToeAI {
 		return player;
 	}
 
+	//user sets first move
 	static int pickFirstMove(char player) {
 		Scanner scan = new Scanner(System.in);
 		System.out.print("Pick first move for player " + player + ": ");
@@ -96,7 +90,7 @@ public class TicTacToeAI {
 		return move;
 	}
 
-
+	//randomly selects if AI or user goes first
 	static char whoGoesFirst() {
 		int rand = (int)(Math.random() * 2);
 
